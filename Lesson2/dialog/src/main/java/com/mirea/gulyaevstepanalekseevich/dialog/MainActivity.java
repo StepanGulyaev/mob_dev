@@ -1,5 +1,6 @@
 package com.mirea.gulyaevstepanalekseevich.dialog;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -9,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -40,5 +42,20 @@ public class MainActivity extends AppCompatActivity {
     public void onNeutralClicked() {
         Toast.makeText(getApplicationContext(), "You've chosen button \"On Pause\"!",
                 Toast.LENGTH_LONG).show();
+    }
+
+    public void onClickShowDatePicker(View view) {
+        MyDateDialogFragment dateDialog = new MyDateDialogFragment();
+        dateDialog.show(getSupportFragmentManager(), "date");
+    }
+
+    public void onClickShowTimePicker(View view) {
+        MyTimeDialogFragment timeDialog = new MyTimeDialogFragment();
+        timeDialog.show(getSupportFragmentManager(), "time");
+    }
+
+    public void onClickShowProgressDialog(View view) {
+        MyProgressDialogFragment progressDialog = new MyProgressDialogFragment();
+        progressDialog.show(getSupportFragmentManager(), "date");
     }
 }
