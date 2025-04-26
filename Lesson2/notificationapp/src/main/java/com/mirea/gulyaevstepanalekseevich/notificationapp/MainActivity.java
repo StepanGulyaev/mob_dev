@@ -24,7 +24,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     private int PermissionCode = 200;
-    private static final String CHANNEL_ID = "com.mirea.asd.notification.ANDROID";
+    private static final String CHANNEL_ID = "com.mirea.gulyaevstepanalekseevich.notificationapp.ANDROID";
     @RequiresApi(api = Build.VERSION_CODES.VANILLA_ICE_CREAM)
 
     @Override
