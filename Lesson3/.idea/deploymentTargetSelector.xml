@@ -17,6 +17,9 @@
       <SelectionState runConfigName="systemintentsapp">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
+      <SelectionState runConfigName="simplefragmentapp">
+        <option name="selectionMode" value="DROPDOWN" />
+      </SelectionState>
     </selectionStates>
   </component>
 </project>
