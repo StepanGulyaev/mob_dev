@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 
 public class MainActivity extends AppCompatActivity {
     private Fragment fragment1, fragment2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,18 +32,23 @@ public class MainActivity extends AppCompatActivity {
         fragment2 = new SecondFragment();
         FragmentManager fragmentManager = getSupportFragmentManager();
         Button btnFirstFragment = (Button) findViewById(R.id.btnFirstFragment);
-        btnFirstFragment.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView,
-                        fragment1).commit();
-            }
-        });
+        if (btnFirstFragment != null) {
+            btnFirstFragment.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    fragmentManager.beginTransaction().replace(R.id.fragmentContainerView,
+                            fragment1).commit();
+                }
+            });
+        }
+
         Button btnSecondFragment = (Button) findViewById(R.id.btnSecondFragment);
-        btnSecondFragment.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                fragmentManager.beginTransaction().replace(R.id.fragmentContainerView,
-                        fragment2).commit();
-            }
-        });
+        if (btnFirstFragment != null) {
+            btnSecondFragment.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    fragmentManager.beginTransaction().replace(R.id.fragmentContainerView,
+                            fragment2).commit();
+                }
+            });
+        }
     }
 }
