@@ -20,9 +20,9 @@ public class SecondActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String datetime = intent.getStringExtra("datetime");
-
+        String displayText = "The square of my group id is 64\nand current time is: " + datetime;
         TextView displayTimeTextView = findViewById(R.id.displayTimeTextView);
-        displayTimeTextView.setText(datetime);
+        displayTimeTextView.setText(displayText);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
