@@ -24,31 +24,22 @@ public class AudioFragment extends Fragment {
     private static final int REQUEST_CODE_PERMISSION = 200;
     private static final String TAG = "AudioFragment";
 
-    // Whether we have RECORD_AUDIO permission
     private boolean isWork = false;
 
-    // Track toggle state for recording and playback
     private boolean isStartRecording = true;
     private boolean isStartPlaying = true;
 
     private MediaRecorder recorder = null;
     private MediaPlayer player = null;
 
-    // Path where the .3gp file will be stored
     private String recordFilePath;
 
-    // UI references
     private Button recordButton;
     private Button playButton;
 
     public AudioFragment() {
-        // Required empty constructor
     }
 
-    /**
-     * If you still want a newInstance(...) method for passing args,
-     * you can keep it or remove it; it’s not used in this example.
-     */
     public static AudioFragment newInstance(String param1, String param2) {
         AudioFragment fragment = new AudioFragment();
         Bundle args = new Bundle();
@@ -61,11 +52,9 @@ public class AudioFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // (Optional) retrieve any arguments passed via newInstance(...)
         if (getArguments() != null) {
             String mParam1 = getArguments().getString("param1");
             String mParam2 = getArguments().getString("param2");
-            // You can store them if needed
         }
     }
 
@@ -75,7 +64,6 @@ public class AudioFragment extends Fragment {
             ViewGroup container,
             Bundle savedInstanceState
     ) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_audio, container, false);
     }
 
@@ -83,18 +71,13 @@ public class AudioFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // 1) Bind to the Buttons in fragment_audio.xml
         recordButton = view.findViewById(R.id.recordButton);
         playButton = view.findViewById(R.id.playButton);
 
-        // 2) Compute the path where we’ll store the recorded audio (.3gp)
-        //    This mirrors your Activity’s logic:
-        //    new File(getExternalFilesDir(Environment.DIRECTORY_MUSIC), "audiorecordtest.3gp")
         File musicDir = requireContext().getExternalFilesDir(Environment.DIRECTORY_MUSIC);
         recordFilePath = new File(musicDir, "audiorecordtest.3gp").getAbsolutePath();
         Log.d(TAG, "recordFilePath: " + recordFilePath);
 
-        // 3) Check RECORD_AUDIO permission
         int audioPermission = ContextCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.RECORD_AUDIO
@@ -102,17 +85,14 @@ public class AudioFragment extends Fragment {
         isWork = (audioPermission == PackageManager.PERMISSION_GRANTED);
 
         if (!isWork) {
-            // If we don’t have it, request it from the Fragment
             requestPermissions(
                     new String[]{Manifest.permission.RECORD_AUDIO},
                     REQUEST_CODE_PERMISSION
             );
         }
 
-        // 4) Set up OnClickListener for recordButton
         recordButton.setOnClickListener(v -> {
             if (!isWork) {
-                // If permission is not granted, do nothing
                 return;
             }
 
@@ -129,7 +109,7 @@ public class AudioFragment extends Fragment {
             isStartRecording = !isStartRecording;
         });
 
-        // 5) Set up OnClickListener for playButton
+
         playButton.setOnClickListener(v -> {
             if (isStartPlaying) {
                 startPlaying();
@@ -144,10 +124,6 @@ public class AudioFragment extends Fragment {
         });
     }
 
-    /**
-     * When the user responds to the permission dialog, this method is called.
-     * If they granted RECORD_AUDIO, set isWork = true; otherwise false.
-     */
     @Override
     public void onRequestPermissionsResult(
             int requestCode,
@@ -159,7 +135,6 @@ public class AudioFragment extends Fragment {
         if (requestCode == REQUEST_CODE_PERMISSION) {
             isWork = (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED);
-            // If they gave permission, they can now record; if not, recordButton will do nothing.
         }
     }
 

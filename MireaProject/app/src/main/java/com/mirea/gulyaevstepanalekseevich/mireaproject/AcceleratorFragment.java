@@ -50,7 +50,6 @@ public class AcceleratorFragment extends Fragment implements SensorEventListener
     ) {
         super.onViewCreated(view, savedInstanceState);
 
-        // 1) Enable Edge-to-Edge (same as your Activity’s code)
         ViewCompat.setOnApplyWindowInsetsListener(
                 view.findViewById(R.id.main),
                 (v, insets) -> {
@@ -65,12 +64,10 @@ public class AcceleratorFragment extends Fragment implements SensorEventListener
                 }
         );
 
-        // 2) Bind our TextViews
         azimuthTextView = view.findViewById(R.id.textViewAzimuth);
         pitchTextView   = view.findViewById(R.id.textViewPitch);
         rollTextView    = view.findViewById(R.id.textViewRoll);
 
-        // 3) Get SensorManager and the default accelerometer
         sensorManager = (SensorManager) requireContext().getSystemService(SENSOR_SERVICE);
         if (sensorManager != null) {
             accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -80,7 +77,6 @@ public class AcceleratorFragment extends Fragment implements SensorEventListener
     @Override
     public void onResume() {
         super.onResume();
-        // Re-register the listener, same as your Activity’s onResume()
         if (accelerometer != null) {
             sensorManager.registerListener(
                     this,
@@ -93,19 +89,16 @@ public class AcceleratorFragment extends Fragment implements SensorEventListener
     @Override
     public void onPause() {
         super.onPause();
-        // Unregister the listener to save battery
         sensorManager.unregisterListener(this);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        // Only respond if it’s the accelerometer
         if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             float x = event.values[0];
             float y = event.values[1];
             float z = event.values[2];
 
-            // Update each TextView with the new readings
             azimuthTextView.setText(String.format("Azimuth: %s", x));
             pitchTextView.setText(String.format("Pitch: %s",   y));
             rollTextView.setText(String.format("Roll: %s",     z));
@@ -114,6 +107,5 @@ public class AcceleratorFragment extends Fragment implements SensorEventListener
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        // We don’t need to do anything here for this example
     }
 }
