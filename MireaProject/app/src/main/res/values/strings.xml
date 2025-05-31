@@ -15,4 +15,6 @@
     <string name="browser">Browser</string>
     <string name="Worker">Worker</string>
     <string name="Camera">Camera</string>
+    <string name="Audio">Audio</string>
+    <string name="Acellerator">Accelerator</string>
 </resources>

@@ -42,4 +42,14 @@
         android:name="com.mirea.gulyaevstepanalekseevich.mireaproject.CameraFragment"
         android:label="fragment_camera"
         tools:layout="@layout/fragment_camera" />
+    <fragment
+        android:id="@+id/nav_audio"
+        android:name="com.mirea.gulyaevstepanalekseevich.mireaproject.AudioFragment"
+        android:label="fragment_audio"
+        tools:layout="@layout/fragment_audio" />
+    <fragment
+        android:id="@+id/nav_accellerator"
+        android:name="com.mirea.gulyaevstepanalekseevich.mireaproject.AcceleratorFragment"
+        android:label="fragment_accellerator"
+        tools:layout="@layout/fragment_accellerator" />
 </navigation>
