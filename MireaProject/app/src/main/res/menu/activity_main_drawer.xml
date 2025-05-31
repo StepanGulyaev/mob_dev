@@ -21,5 +21,10 @@
             android:icon="@drawable/ic_menu_browser"
             android:title="@string/browser"
             />
+        <item
+            android:id="@+id/nav_launch_worker"
+            android:icon="@drawable/ic_menu_worker"
+            android:title="@string/Worker"
+            />
     </group>
 </menu>

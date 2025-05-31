@@ -28,8 +28,13 @@
         android:label="fragment_data"
         tools:layout="@layout/fragment_data" />
     <fragment
-        android:id="@+id/webViewFragment"
+        android:id="@+id/nav_browser"
         android:name="com.mirea.gulyaevstepanalekseevich.mireaproject.WebViewFragment"
         android:label="fragment_web_view"
         tools:layout="@layout/fragment_web_view" />
+    <fragment
+        android:id="@+id/nav_launch_worker"
+        android:name="com.mirea.gulyaevstepanalekseevich.mireaproject.workFragment"
+        android:label="fragment_work"
+        tools:layout="@layout/fragment_work" />
 </navigation>
