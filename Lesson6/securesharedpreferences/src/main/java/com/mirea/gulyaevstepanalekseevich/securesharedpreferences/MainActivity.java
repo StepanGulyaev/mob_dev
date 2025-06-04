@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         binding.poetName.setText(encryptedText);
 
         String encryptedImage = secureSharedPreferences.getString(KEY_IMAGE_RESOURCE, "No data found");
-        @SuppressLint("DiscouragedApi") int imageResId = getResources().getIdentifier(
+        int imageResId = getResources().getIdentifier(
                 encryptedImage,
                 "drawable",
                 getPackageName()
