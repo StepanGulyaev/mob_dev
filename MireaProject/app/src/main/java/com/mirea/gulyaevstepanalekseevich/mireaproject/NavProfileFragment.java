@@ -21,13 +21,13 @@ public class NavProfileFragment extends Fragment {
     private EditText editUsername, editEmail;
     private SharedPreferences prefs;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_nav_profile, container, false);
 
-        loggedAs = view.requireViewById(R.id.tvLoggedAs);
         editUsername = view.findViewById(R.id.etUsername);
         editEmail = view.findViewById(R.id.etEmail);
         Button saveButton = view.findViewById(R.id.btnSaveProfile);
@@ -44,7 +44,6 @@ public class NavProfileFragment extends Fragment {
         String email = prefs.getString("email", "");
         editUsername.setText(username);
         editEmail.setText(email);
-        loggedAs.setText(loggedAs.getText() + username + ";" + email);
     }
 
     private void saveUserData() {
@@ -61,7 +60,12 @@ public class NavProfileFragment extends Fragment {
         editor.putString("email", email);
         editor.apply();
 
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).refreshProfileData();
+        }
+
         Toast.makeText(requireContext(), "Profile saved", Toast.LENGTH_SHORT).show();
         loadSavedData();
+
     }
 }

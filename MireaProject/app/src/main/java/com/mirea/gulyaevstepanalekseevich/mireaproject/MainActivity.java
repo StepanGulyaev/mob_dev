@@ -1,8 +1,10 @@
 package com.mirea.gulyaevstepanalekseevich.mireaproject;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.TextView;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
@@ -20,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
+    private TextView headerUsername, headerEmail;
+    private SharedPreferences prefs;
+    private static final String PREFS_NAME = "UserProfilePrefs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,18 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Initialize SharedPreferences
+        prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+
+        // Access the navigation header views directly
+        NavigationView navigationView = binding.navView;
+        View headerView = navigationView.getHeaderView(0);
+        headerUsername = headerView.findViewById(R.id.headerUsername);
+        headerEmail = headerView.findViewById(R.id.headerEmail);
+
+        // Load profile data
+        loadProfileData();
 
         setSupportActionBar(binding.appBarMain.toolbar);
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
@@ -38,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         DrawerLayout drawer = binding.drawerLayout;
-        NavigationView navigationView = binding.navView;
+
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -58,6 +75,18 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
+    private void loadProfileData() {
+        String username = prefs.getString("username", "Username");
+        String email = prefs.getString("email", "email@example.com");
+
+        headerUsername.setText(username);
+        headerEmail.setText(email);
+    }
+
+    public void refreshProfileData() {
+        loadProfileData();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -70,6 +99,4 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
-
 }
