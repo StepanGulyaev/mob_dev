@@ -52,4 +52,9 @@
         android:name="com.mirea.gulyaevstepanalekseevich.mireaproject.AcceleratorFragment"
         android:label="fragment_accellerator"
         tools:layout="@layout/fragment_accellerator" />
+    <fragment
+        android:id="@+id/nav_profile"
+        android:name="com.mirea.gulyaevstepanalekseevich.mireaproject.NavProfileFragment"
+        android:label="fragment_nav_profile"
+        tools:layout="@layout/fragment_nav_profile" />
 </navigation>
