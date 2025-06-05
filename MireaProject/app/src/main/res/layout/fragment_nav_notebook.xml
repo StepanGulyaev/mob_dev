@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".NavNotebook">
+
+    <TextView
+        android:id="@+id/fileContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#f0f0f0"
+        android:padding="16dp"
+        android:text="No file loaded"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create New Encrypted File"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/btnLoad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Load Encrypted File"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>
+
+

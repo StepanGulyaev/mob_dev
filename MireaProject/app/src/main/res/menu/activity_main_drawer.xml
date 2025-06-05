@@ -46,5 +46,10 @@
             android:icon="@drawable/ic_menu_profile"
             android:title="@string/Profile"
             />
+        <item
+            android:id="@+id/nav_notebook"
+            android:icon="@drawable/ic_menu_notebook"
+            android:title="@string/Notebook"
+            />
     </group>
 </menu>

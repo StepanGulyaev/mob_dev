@@ -56,4 +56,9 @@
         android:name="com.mirea.gulyaevstepanalekseevich.mireaproject.NavProfileFragment"
         android:label="fragment_nav_profile"
         tools:layout="@layout/fragment_nav_profile" />
+    <fragment
+        android:id="@+id/nav_notebook"
+        android:name="com.mirea.gulyaevstepanalekseevich.mireaproject.NavNotebook"
+        android:label="fragment_nav_notebook"
+        tools:layout="@layout/fragment_nav_notebook" />
 </navigation>
