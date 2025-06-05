@@ -61,4 +61,9 @@
         android:name="com.mirea.gulyaevstepanalekseevich.mireaproject.NavNotebook"
         android:label="fragment_nav_notebook"
         tools:layout="@layout/fragment_nav_notebook" />
+    <fragment
+        android:id="@+id/firebaseAuthFragment"
+        android:name="com.mirea.gulyaevstepanalekseevich.mireaproject.FirebaseAuthFragment"
+        android:label="fragment_firebase_auth"
+        tools:layout="@layout/fragment_firebase_auth" />
 </navigation>
