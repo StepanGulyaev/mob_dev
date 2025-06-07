@@ -1,4 +1,4 @@
-package com.mirea.gulyaevstepanalekseevich.mireaproject; // <-- adjust if your package is different
+package com.mirea.gulyaevstepanalekseevich.mireaproject;
 
 import android.Manifest;
 import android.app.Activity;
@@ -105,14 +105,12 @@ public class CameraFragment extends Fragment {
                         }
                 );
 
-
         buttonMakePhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!isWork) {
                     return;
                 }
-
 
                 Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 try {
@@ -132,10 +130,6 @@ public class CameraFragment extends Fragment {
         });
     }
 
-    /**
-     * Create an image file in your app’s external‐files/Pictures directory.
-     * The filename is based on a timestamp, just like your MainActivity example.
-     */
     private File createImageFile() throws IOException {
         String timeStamp = new SimpleDateFormat(
                 "yyyyMMdd_HHmmss",

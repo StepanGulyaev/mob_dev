@@ -15,7 +15,6 @@ import com.mirea.gulyaevstepanalekseevich.mireaproject.databinding.FragmentFireb
 
 public class AuthHostActivity extends AppCompatActivity {
     private static final String TAG = "AuthHostActivity";
-
     private FragmentFirebaseAuthBinding binding;
     private FirebaseAuth mAuth;
 

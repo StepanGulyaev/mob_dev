@@ -33,16 +33,13 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Initialize SharedPreferences
         prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
 
-        // Access the navigation header views directly
         NavigationView navigationView = binding.navView;
         View headerView = navigationView.getHeaderView(0);
         headerUsername = headerView.findViewById(R.id.headerUsername);
         headerEmail = headerView.findViewById(R.id.headerEmail);
 
-        // Load profile data
         loadProfileData();
 
         setSupportActionBar(binding.appBarMain.toolbar);
